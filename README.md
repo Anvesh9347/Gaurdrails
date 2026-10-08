@@ -60,37 +60,5 @@ A prompt containing `john.doe@example.com` and card `4111-1111-1111-1111` is sen
 - Use PII middleware so sensitive data never reaches the model or the tools.
 - Layer them: rules first, then model check, then PII handling.
 
-## Getting started
 
-```bash
-git clone <your-repo-url>
-cd <your-repo>
-python -m venv venv
-source venv/bin/activate        # Windows: venv\Scripts\activate
-pip install python-dotenv langchain langchain-openai langchain-core jupyter
-```
 
-Create a `.env` file in the project root (do **not** commit it):
-
-```
-OPENAI_API_KEY=your-key-here
-```
-
-Then launch the notebook:
-
-```bash
-jupyter notebook Guardrails.ipynb
-```
-
-> The notebook uses `langchain.agents.create_agent` and `PIIMiddleware`, which require a recent LangChain 1.x release.
-
-## Possible extensions
-
-- Add output guardrails (check the model's reply, not just the input).
-- Add more PII types (phone numbers, SSNs, IP addresses).
-- Replace keyword matching with word-boundary regex to reduce false positives.
-- Log blocked requests for review.
-
-## Security note
-
-Never commit `.env` or any API key. Add `.env` and `venv/` to `.gitignore`.
